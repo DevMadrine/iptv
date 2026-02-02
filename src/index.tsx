@@ -8,6 +8,7 @@ import { merge } from "lodash-es";
 import { config } from "#devices/common";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import RestaurantScreen from "./screens/RestaurantScreen";
+import RestaurantMealsScreen from "./screens/restaurantMealsScreen";
 
 merge(LightningConfig, config.lightning);
 
@@ -18,7 +19,8 @@ render(() => {
   return (
     <HashRouter root={App}>
       {/* <Route path="/" component={WelcomeScreen} /> */}
-      <Route path="/" component={RestaurantScreen} /> 
+      {/* <Route path="/" component={RestaurantScreen} />  */}
+      <Route path="/" component={RestaurantMealsScreen} /> 
     </HashRouter>
   );
 });
