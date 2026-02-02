@@ -7,7 +7,8 @@ const model = restaurantMenu();
 
 export default function RestaurantScreen(){
 return(
-  <View src="./assets/rest.jpg" 
+  <View 
+  src="./assets/rest.jpg" 
   style={{
     width: 1920,
     height: 1080,
