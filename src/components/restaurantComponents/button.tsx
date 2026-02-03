@@ -3,7 +3,7 @@ import { type Component } from "solid-js";
 
 interface ButtonProps {
   type: "plus" | "minus"; 
-  onClick?: () => void;   
+ active?: boolean;  
 }
 
 const Button: Component<ButtonProps> = (props) => {
@@ -19,17 +19,12 @@ const Button: Component<ButtonProps> = (props) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        border: { width:2,  color: "#ffffff80"},
-        // $focus: {
-        //   color: "#00000080",
-        //   border: { width:2, color: "#F58520"},
-        //   transition: { scale: { duration: 150 } },
-        // },
-        // $unfocus: {
-        //   scale: 1,
-        // },
+        border: { 
+          width:2,  
+          color: props.active? "#F58520" : "#ffffff80" 
+        },
+       
       }}
-      onClick={props.onClick}
     >
       <Text
         style={{
