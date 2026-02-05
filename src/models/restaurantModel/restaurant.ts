@@ -16,70 +16,71 @@ export function restaurantMenu() {
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "2", 
     mealName: 'Chicken',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "3", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "4", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   {mealId: "5", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
-  {mealId: "6", 
+  { 
+    mealId: "6", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+
   },
   {mealId: "7", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   {mealId: "8", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   {mealId: "9", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   {mealId: "10", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   ],
   "Katogo": [
@@ -88,70 +89,70 @@ export function restaurantMenu() {
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "12", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "13", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "14", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "15", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   {mealId: "16", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "17", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "18", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "19", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "20", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   ],
   "Desserts": [
@@ -160,70 +161,70 @@ export function restaurantMenu() {
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   {mealId: "22", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "23", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+  
   },
   {mealId: "24", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+  
   },
   {mealId: "25", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   {mealId: "26", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   {mealId: "27", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "28", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "29", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "30", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   ],
   "Asian foods": [
@@ -232,70 +233,70 @@ export function restaurantMenu() {
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   {mealId: "32", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   {mealId: "33", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+ 
   },
   {mealId: "34", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   {mealId: "35", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+  
   },
   {mealId: "36", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   {mealId: "37", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   {mealId: "38", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   {mealId: "39", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "40", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   ],
   "Sea food": [
@@ -304,97 +305,95 @@ export function restaurantMenu() {
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   {mealId: "42", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   {mealId: "43", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "44", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+  
   },
   {mealId: "45", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "46", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   {mealId: "47", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+    
   },
   {mealId: "48", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
+   
   },
   {mealId: "49", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
   },
   {mealId: "50", 
     mealName: 'Beef lasagne',
     mealImage: './assets/breakfast.jpg', 
     mealDescription: 'Delicious beef lasagne with double chilli. Served with a cold coke or juice. You should not miss out', 
     mealPrice: 4000, 
-    quantity: 1
   },
   ]
 }
    
   );
 
-  function increaseQuantity(category: string, index: number) {
-  setMeal(prev => {
-    const copy = structuredClone(prev);
-    copy[category][index].quantity += 1;
-    return copy;
-  });
-}
+//   function increaseQuantity(category: string, index: number) {
+//   setMeal(prev => {
+//     const copy = structuredClone(prev);
+//     copy[category][index].quantity += 1;
+//     return copy;
+//   });
+// }
 
-function decreaseQuantity(category: string, index: number) {
-  setMeal(prev => {
-    const copy = structuredClone(prev);
-    copy[category][index].quantity =
-      Math.max(0, copy[category][index].quantity - 1);
-    return copy;
-  });
-}
+// function decreaseQuantity(category: string, index: number) {
+//   setMeal(prev => {
+//     const copy = structuredClone(prev);
+//     copy[category][index].quantity =
+//       Math.max(0, copy[category][index].quantity -= 1);
+//     return copy;
+//   });
+// }
 
   return {
     menu,
     meal,
-    increaseQuantity,
-    decreaseQuantity,
+    // increaseQuantity,
+    // decreaseQuantity,
   };
 }

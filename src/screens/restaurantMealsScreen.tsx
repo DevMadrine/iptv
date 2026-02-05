@@ -1,77 +1,61 @@
-
-import MealCard from "@/components/restaurantComponents/mealCard";
-import { restaurantMenu } from "@/models/restaurantModel/restaurant";
+import CartCard from "@/components/restaurantComponents/cartCard";
+import CartContainerContainer from "@/controllers/restaurantControllers/CartContainerController";
+import MealContainerController from "@/controllers/restaurantControllers/MealsContainerController";
+import { cartItems, hasCartItems } from "@/utils/restaurantUtils/restaurant-utils";
 import { For, View, Text} from "@lightningtv/solid";
-import { Column, Row } from "@lightningtv/solid/primitives";
+import { Column, Row, Visible } from "@lightningtv/solid/primitives";
+import { createEffect, createMemo, createSignal } from "solid-js";
 
 
 export default function RestaurantMealsScreen(){
+  const [selectedZone, setSelectedZone] = createSignal(0);
 
-const mealModel = restaurantMenu();
+  const [mealWidth, setMealWidth] = createSignal(1778);
+
+createEffect(() => {
+    const hasItems = hasCartItems();
+    const newWidth = hasItems ? 1248 : 1778;
+    console.log('hasCartItems:', hasItems, 'mealWidth:', newWidth);
+    setMealWidth(newWidth);
+  });
 
 
 
 return(
-  <View
- src="./assets/rest.jpg"
+  <View 
+  src="./assets/rest.jpg"
   style={{
     width: 1920,
     height: 1080,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+    }}>
+    <Row
+ 
+  onSelectedChanged={(index) => setSelectedZone(index)}
+  style={{
+   width: hasCartItems() ? 1248 + 480 + 50 : 1778,
+    height: 800,
     display: 'flex',
-    flexDirection: 'row',
     gap: 50,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    clipping: true
   }}
   >
-    <View style={{
-      width: 1248,
-      height: 800,
-      // color: "#F58520",
-      clipping: true
-      
-    }}> 
-      <Column 
-      style={{
-        width: 1280,
-        height: 800
-      }}>
-        <For each={Object.entries(mealModel.meal())}>
-          {([categoryName,meals], rowIndex) =>(
-            <View forwardFocus={1} style={{width: 1280, height:200, display: 'flex', flexDirection: "column", gap:10}}>
-              <Text style={{fontSize: 24, fontWeight: 'lighter'}}>{categoryName}</Text>
-        <Row 
-        style={{
-        width: 1248,
-        height: 160,
-      }}>
-        <For each = {meals}>
-          {(mealData, itemIndex) => (
-            <MealCard
-               autofocus={rowIndex() === 0 && itemIndex() === 0}
-                mealImage={mealData.mealImage}
-                quantity={mealData.quantity}
-                mealName={mealData.mealName}
-                mealDescription={mealData.mealDescription}
-                mealPrice={mealData.mealPrice}
-                onDecrease={() => mealModel.decreaseQuantity(categoryName, itemIndex())}
-                onIncrease={() => mealModel.increaseQuantity(categoryName, itemIndex())}
-              />
-          )}
-        </For>
-      </Row>
-      </View>
-          )}
-        </For>
-      </Column>
-    </View>
-      <View style={{
-      width: 480,
-      height: 800,
-      color: "#ffffff",
-    }}>
-     
-    </View>
+   <MealContainerController
+    width={mealWidth()}
+   />
+   <Visible when={cartItems().length>0}>
+    <CartContainerContainer/>
+   </Visible>
+   
+  </Row>
   </View>
+  
 )
 }
+
+
+ 

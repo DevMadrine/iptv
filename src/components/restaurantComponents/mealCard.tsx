@@ -1,17 +1,17 @@
+import { activeButton, editing, flashButton, setActiveButton, setEditing } from "@/utils/restaurantUtils/restaurant-utils";
 import Button from "./button";
 import { IntrinsicNodeProps, View, Text, NodeStyles, TextStyles} from "@lightningtv/solid";
-import { Row } from "@lightningtv/solid/primitives";
-import { Component, createSignal } from "solid-js";
+import { Component} from "solid-js";
 
 interface MealCardProps extends IntrinsicNodeProps{
 mealImage: string;
 mealName: string;
 mealDescription: string;
 mealPrice: string;
-quantity: string;
 onIncrease: () => void;
 onDecrease: () => void;
 }
+
 
 const mealCardStyles: NodeStyles | undefined ={
   width: 360,
@@ -24,7 +24,7 @@ const mealCardStyles: NodeStyles | undefined ={
   alignItems: "center",
   gap:10,
   $focus:{
-  border:{width: 2, color: "#ffffff"},
+  border:{width: 2, color: editing() ? "#F58520" : "#ffffff"},
   transition: {scale: { duration: 150, easing: "ease-out" }}
   },
   $unfocus: { alpha: 0.85}
@@ -51,15 +51,13 @@ const mealNameStyles : TextStyles | undefined ={
   letterSpacing: 1,
 }
 
-const [editing, setEditing] = createSignal(false);
-const [activeButton, setActiveButton] = createSignal<"plus" | "minus" | null>(null);
 
 const MealCard:Component<MealCardProps> = props =>{
 return(
   <View 
   focusable
   autofocus={props.autofocus}
-  onEnter={() => {setEditing(!editing()); setActiveButton(null)}}
+  onEnter={(e) => {setEditing(!editing()); setActiveButton(null);e.stopPropagation();}}
   onBack={() => {setEditing(false); setActiveButton(null)}}
   onBlur={() => {
         setEditing(false);
@@ -67,14 +65,14 @@ return(
       }}
   onLeft={(e) => {
         if (editing()) {
-          setActiveButton("minus");
+         flashButton("minus")
           props.onDecrease();
           e.stopPropagation();
         }
       }}
   onRight={(e) => {
         if (editing()) {
-          setActiveButton("plus")
+         flashButton("plus")
           props.onIncrease();
           e.stopPropagation();
         }
@@ -122,8 +120,6 @@ return(
     active={editing() && activeButton() === "minus"}
     />
     </View>
-
-    <Text style={{fontSize: 35}}>{props.quantity}x</Text>
     </View>
     </View>
 
