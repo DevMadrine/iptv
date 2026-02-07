@@ -9,6 +9,9 @@ import { config } from "#devices/common";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import RestaurantScreen from "./screens/RestaurantScreen";
 import RestaurantMealsScreen from "./screens/restaurantMealsScreen";
+import LiveTvScreen from "./screens/LiveTvScreen";
+import TvPlayerView from "./views/tvViews/TvPlayerView";
+import Player from "./views/tvViews/TvPlayerView";
 
 merge(LightningConfig, config.lightning);
 
@@ -20,7 +23,8 @@ render(() => {
     <HashRouter root={App}>
       {/* <Route path="/" component={WelcomeScreen} /> */}
       {/* <Route path="/" component={RestaurantScreen} />  */}
-      <Route path="/" component={RestaurantMealsScreen} /> 
+      {/* <Route path="/" component={RestaurantMealsScreen} />  */}
+      <Route path="/" component={LiveTvScreen} /> 
     </HashRouter>
   );
 });
