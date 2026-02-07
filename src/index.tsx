@@ -7,6 +7,10 @@ import fonts from "./fonts";
 import { merge } from "lodash-es";
 import { config } from "#devices/common";
 import WelcomeScreen from "./screens/WelcomeScreen";
+import RestaurantScreen from "./screens/RestaurantScreen";
+import RestaurantMealsScreen from "./screens/restaurantMealsScreen";
+import LiveTvScreen from "./screens/LiveTvScreen";
+
 
 merge(LightningConfig, config.lightning);
 
@@ -16,7 +20,10 @@ render(() => {
   useFocusManager(config.keys, config.keyHoldOptions);
   return (
     <HashRouter root={App}>
-      <Route path="/" component={WelcomeScreen} />
+      {/* <Route path="/" component={WelcomeScreen} /> */}
+      {/* <Route path="/" component={RestaurantScreen} />  */}
+      {/* <Route path="/" component={RestaurantMealsScreen} />  */}
+      <Route path="/" component={LiveTvScreen} /> 
     </HashRouter>
   );
 });

@@ -19,6 +19,7 @@ export const config = {
     fontSettings: { fontFamily: "Roboto", color: 0xffffffff, fontSize: 40 },
     animationSettings: { easing: "ease-in-out", duration: 250 },
     rendererOptions: {
+      clearColor: 0x00000000,
       appHeight: 1080,
       appWidth: 1920,
       numImageWorkers: 2,
