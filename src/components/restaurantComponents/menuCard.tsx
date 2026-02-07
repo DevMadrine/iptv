@@ -39,40 +39,51 @@ shader: null,
 },
 }}
 >
-  <View 
+  <View
   style={{
-width: 220,
-height:280,
-color: "#00000020",
-scaleMode: "cover",
-display: 'flex',
-justifyContent: 'center',
-alignItems: 'flexEnd',
+    width: 220,
+    height: 280,
+    color: "#00000020",
+    zIndex: 1,
+  }}/>
+  <View
+  style={{
+    width: 220,
+    height: 280,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flexEnd',
+    zIndex: 2,
+    mountY: 1,
+    y: 280,
   }}>
-<View
-style={{
-  width: 160,
-  height: 40,
-  color: "#F58520",
-  marginBottom: 16,
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  borderRadius:6
-
-}}
->
-  <Text
-  style={{
-    fontSize: 20,
-    fontFamily: 'Roboto',
-    fontWeight: 'bold',
-    color: '#ffffff',
-    
-  }}
-  >{props.name}</Text>
-</View>
-</View>
+    <View
+    style={{
+      width: 160,
+      height: 40,
+      linearGradient: {
+        colors: [0xE8451Aff, 0xF58520ff],
+        angle: 135,
+      },
+      marginBottom: 16,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 10,
+      border: { width: 1, color: '#ffffff30' },
+    }}
+    >
+      <Text
+      style={{
+        fontSize: 18,
+        fontFamily: 'Roboto',
+        fontWeight: 'bold',
+        color: '#ffffff',
+        letterSpacing: 1,
+      }}
+      >{props.name}</Text>
+    </View>
+  </View>
 </View>
 );
 };

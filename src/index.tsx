@@ -21,7 +21,7 @@ render(() => {
   return (
     <HashRouter root={App}>
       {/* <Route path="/" component={WelcomeScreen} /> */}
-      {/* <Route path="/" component={RestaurantScreen} />  */}
+      <Route path="/" component={RestaurantScreen} /> 
       {/* <Route path="/" component={RestaurantMealsScreen} />  */}
       <Route path="/" component={LiveTvScreen} /> 
     </HashRouter>
