@@ -33,7 +33,7 @@ const App = props => {
       onPlayPause={() => navigate("/text")}
       onMenu={() => navigate("/")}
     >
-      <View color={0x071423ff} />
+      <View color={0x07142300} />
       {props.children}
     </View>
   );

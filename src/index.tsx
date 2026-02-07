@@ -10,8 +10,7 @@ import WelcomeScreen from "./screens/WelcomeScreen";
 import RestaurantScreen from "./screens/RestaurantScreen";
 import RestaurantMealsScreen from "./screens/restaurantMealsScreen";
 import LiveTvScreen from "./screens/LiveTvScreen";
-import TvPlayerView from "./views/tvViews/TvPlayerView";
-import Player from "./views/tvViews/TvPlayerView";
+
 
 merge(LightningConfig, config.lightning);
 

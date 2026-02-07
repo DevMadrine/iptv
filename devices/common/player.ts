@@ -16,7 +16,6 @@ export class CommonPlayer implements Player {
 
   constructor(videoElement?: HTMLVideoElement) {
     this._videoElement = videoElement || this.createVideoElement();
-    this.createPlayer();
   }
 
   private createVideoElement(): HTMLVideoElement {
@@ -26,13 +25,22 @@ export class CommonPlayer implements Player {
     video.style.left = "0";
     video.style.width = "100%";
     video.style.height = "100%";
-    document.body.appendChild(video);
+    video.style.objectFit = "cover";
+    video.autoplay = true;
+    video.muted = true;
+    video.playsInline = true;
+    const container = document.getElementById("video") || document.body;
+    container.appendChild(video);
     return video;
   }
 
-  private createPlayer() {
-    this._player = new shaka.Player(this._videoElement);
-    this._player.addEventListener("error", event => console.error("Shaka Player error:", event));
+  async init(): Promise<void> {
+    shaka.polyfill.installAll();
+    this._player = new shaka.Player();
+    await this._player.attach(this._videoElement);
+    this._player.addEventListener("error", (event) => {
+      console.error("Shaka Player error:", event);
+    });
   }
 
   async load(streamUrl: string, autoPlay = false, startTime?: number): Promise<void> {
@@ -40,7 +48,10 @@ export class CommonPlayer implements Player {
 
     try {
       await this._player.load(streamUrl, startTime);
-      if (autoPlay) this._videoElement.play();
+      if (autoPlay) {
+        await this._videoElement.play();
+        this.unmuteOnInteraction();
+      }
       console.log("Stream loaded successfully");
     } catch (error) {
       console.error("Failed to load stream:", error);
@@ -71,7 +82,6 @@ export class CommonPlayer implements Player {
 
   stop(): void {
     this._player?.unload();
-    this.createPlayer();
   }
 
   pause(): void {
@@ -80,5 +90,30 @@ export class CommonPlayer implements Player {
 
   seek(time: number): void {
     this._videoElement.currentTime += time;
+  }
+
+  private _unmuteHandler: (() => void) | null = null;
+
+  private unmuteOnInteraction(): void {
+    if (!this._videoElement.muted || this._unmuteHandler) return;
+    const unmute = () => {
+      this._videoElement.muted = false;
+      if (this._videoElement.paused) this._videoElement.play();
+      window.removeEventListener("keydown", unmute, true);
+      window.removeEventListener("pointerdown", unmute, true);
+      this._unmuteHandler = null;
+      console.log("Audio unmuted");
+    };
+    this._unmuteHandler = unmute;
+    window.addEventListener("keydown", unmute, { capture: true, once: true });
+    window.addEventListener("pointerdown", unmute, { capture: true, once: true });
+  }
+
+  async destroy(): Promise<void> {
+    if (this._player) {
+      await this._player.destroy();
+      this._player = null;
+    }
+    this._videoElement.remove();
   }
 }

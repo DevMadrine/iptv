@@ -16,20 +16,22 @@ const menuStyles: NodeStyles | undefined ={
       alignItems: "center",
       justifyContent: "center",
       gap: 20,
+    
      $focus: {
-      color: "#EF5E2C4D",
+       linearGradient: {
+        colors: [0xEF5E2C4D, 0xFFFFFF20],
+        angle: 90 / 360 * Math.PI,
+      },
     },
     transition: { scale: { duration: 120 } },
   };
-
-
 const LiveTvMenu:Component<TvProps> = props =>{
   return(
     <View
     {...props}
     forwardStates
     style={menuStyles}>
-      <Text style={{color: "#F58520",}}>{props.channelNumber}</Text>
+      <Text style={{color: "#FFFFFF",}}>{props.channelNumber}</Text>
       <View 
       style={{
         width: 80,
