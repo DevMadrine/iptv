@@ -2,13 +2,16 @@ import MenuCard from '../components/restaurantComponents/menuCard'
 import { restaurantMenu } from "@/models/restaurantModel/restaurant";
 import { For, View } from "@lightningtv/solid";
 import { Row } from "@lightningtv/solid/primitives";
+import { useNavigate } from "@solidjs/router";
 
 const model = restaurantMenu();
 
 export default function RestaurantScreen(){
+  const navigate = useNavigate();
+
 return(
-  <View 
-  src="./assets/rest.jpg" 
+  <View
+  src="./assets/rest.jpg"
   style={{
     width: 1920,
     height: 1080,
@@ -23,16 +26,16 @@ return(
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'flexEnd',
-      
+
     }}
     >
   <Row
   autofocus={1}
   scroll='center'
   style={{
-    x: 200,              
+    x: 200,
     y: 500,
-    gap: 80,            
+    gap: 80,
     width: 1520,
     height: 300,
     marginBottom: 200
@@ -43,6 +46,7 @@ return(
       <MenuCard
       name={menuData.name}
       menuImage={menuData.menuImage}
+      onEnter={() => navigate(`/restaurant-meals/${menuData.name}`)}
       />
     )}
   </For>

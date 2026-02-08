@@ -1,5 +1,5 @@
 import CartCard from "@/components/restaurantComponents/cartCard";
-import { addToCart, cartItems, decreaseFromCart, mealModel, removeFromCart, subtotal, tax, total } from "@/utils/restaurantUtils/restaurant-utils";
+import { addToCart, cartItems, decreaseFromCart,removeFromCart, subtotal, tax, total } from "@/utils/restaurantUtils/restaurant-utils";
 import { View, Text, For } from "@lightningtv/solid";
 import { Column, Row } from "@lightningtv/solid/primitives";
 
@@ -7,7 +7,8 @@ import { Column, Row } from "@lightningtv/solid/primitives";
 export default function CartContainerContainer(){
   
   return(
-    <View style={{
+    <View
+    style={{
       width: 480,
       height: 800,
       color: "#ffffff",
@@ -15,7 +16,8 @@ export default function CartContainerContainer(){
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      gap:10
+      gap:10,
+      clipping: true
     }}>
      <View 
       style={{

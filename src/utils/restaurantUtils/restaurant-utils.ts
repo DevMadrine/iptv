@@ -2,7 +2,7 @@ import { cart, setCart } from "@/models/restaurantModel/cartStore";
 import { restaurantMenu } from "@/models/restaurantModel/restaurant";
 import { createMemo, createSignal } from "solid-js";
 
-export  const mealModel = restaurantMenu();
+export const mealModel = restaurantMenu();
 export const [editing, setEditing] = createSignal(false);
 export const [activeButton, setActiveButton] = createSignal<"plus" | "minus" | null>(null);
 
@@ -10,7 +10,6 @@ export function flashButton(type: "plus" | "minus") {
   setActiveButton(type);
   setTimeout(() => setActiveButton(null), 120);
 }
-
 
 export function addToCart(mealId: string) {
   setCart(items => {
@@ -49,34 +48,32 @@ export function removeFromCart(mealId: string) {
   setCart(items => items.filter(i => i.mealId !== mealId));
 }
 
-
-
-export const cartItems = createMemo(()=>{
+export const cartItems = createMemo(() => {
   const mealsById = Object.entries(mealModel.meal()).flatMap(
-    ([categoryName, meals]) =>
-      meals.map((meal, index) => ({
-        ...meal,
-        categoryName,
-        index
-      }))
+    ([menuName, categories]) =>
+      Object.entries(categories).flatMap(([categoryName, meals]) =>
+        meals.map((meal, index) => ({
+          ...meal,
+          menuName,
+          categoryName,
+          index
+        }))
+      )
   );
 
-  return cart.map(cartItem =>{
+  return cart.map(cartItem => {
     const matchingMeal = mealsById.find(
       meal => meal.mealId === cartItem.mealId
     );
-    if(!matchingMeal) return null;
-     return {
+    if (!matchingMeal) return null;
+    return {
       ...matchingMeal,
       quantity: cartItem.quantity
     };
-
   }).filter(Boolean);
-  
 });
 
- export const hasCartItems = createMemo(() => cartItems().length > 0);
-
+export const hasCartItems = createMemo(() => cartItems().length > 0);
 
 export const subtotal = createMemo(() => {
   return cartItems().reduce((total, item) => {
@@ -90,4 +87,3 @@ export const subtotal = createMemo(() => {
 export const tax = createMemo(() => Number(subtotal()) * 0.1);
 
 export const total = createMemo(() => Number(subtotal()) + Number(tax()));
-

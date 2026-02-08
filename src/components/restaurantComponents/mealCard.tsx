@@ -1,7 +1,6 @@
-import { activeButton, editing, flashButton, setActiveButton, setEditing } from "@/utils/restaurantUtils/restaurant-utils";
 import Button from "./button";
 import { IntrinsicNodeProps, View, Text, NodeStyles, TextStyles} from "@lightningtv/solid";
-import { Component} from "solid-js";
+import { Component, createSignal} from "solid-js";
 
 interface MealCardProps extends IntrinsicNodeProps{
 mealImage: string;
@@ -24,7 +23,6 @@ const mealCardStyles: NodeStyles | undefined ={
   alignItems: "center",
   gap:10,
   $focus:{
-  border:{width: 2, color: editing() ? "#F58520" : "#ffffff"},
   transition: {scale: { duration: 150, easing: "ease-out" }}
   },
   $unfocus: { alpha: 0.85}
@@ -33,14 +31,14 @@ const mealCardStyles: NodeStyles | undefined ={
 const descriptionStyles: TextStyles | undefined ={
 fontSize: 16,
 color: "#ffffff",
-contain: "width",       
-maxLines: 3,           
-overflowSuffix: "...",  
-wordWrap: 180,          
+contain: "width",
+maxLines: 3,
+overflowSuffix: "...",
+wordWrap: 180,
 textAlign: "left",
 letterSpacing: 0,
 fontStyle: "italic",
-lineHeight: 20, 
+lineHeight: 20,
 }
 
 const mealNameStyles : TextStyles | undefined ={
@@ -53,30 +51,42 @@ const mealNameStyles : TextStyles | undefined ={
 
 
 const MealCard:Component<MealCardProps> = props =>{
+const [isEditing, setIsEditing] = createSignal(false);
+const [isFocused, setIsFocused] = createSignal(false);
+const [localActiveButton, setLocalActiveButton] = createSignal<"plus" | "minus" | null>(null);
+
+function localFlashButton(type: "plus" | "minus") {
+  setLocalActiveButton(type);
+  setTimeout(() => setLocalActiveButton(null), 120);
+}
+
 return(
-  <View 
+  <View
   focusable
   autofocus={props.autofocus}
-  onEnter={(e) => {setEditing(!editing()); setActiveButton(null);e.stopPropagation();}}
-  onBack={() => {setEditing(false); setActiveButton(null)}}
+  border={isFocused() ? { width: 2, color: "#ffffff" } : undefined}
+  onFocus={() => setIsFocused(true)}
+  onEnter={(e) => {setIsEditing(!isEditing()); setLocalActiveButton(null);e.stopPropagation();}}
+  onBack={() => {setIsEditing(false); setLocalActiveButton(null)}}
   onBlur={() => {
-        setEditing(false);
-        setActiveButton(null);
+        setIsEditing(false);
+        setLocalActiveButton(null);
+        setIsFocused(false);
       }}
   onLeft={(e) => {
-        if (editing()) {
-         flashButton("minus")
+        if (isEditing()) {
+         localFlashButton("minus")
           props.onDecrease();
           e.stopPropagation();
         }
       }}
   onRight={(e) => {
-        if (editing()) {
-         flashButton("plus")
+        if (isEditing()) {
+         localFlashButton("plus")
           props.onIncrease();
           e.stopPropagation();
         }
-      }}    
+      }}
   style={mealCardStyles}>
 
     <View style={{
@@ -113,11 +123,11 @@ return(
     }}>
     <Button
      type="plus"
-     active={editing() && activeButton() === "plus"}
+     active={isEditing() && localActiveButton() === "plus"}
      />
-    <Button 
+    <Button
     type="minus"
-    active={editing() && activeButton() === "minus"}
+    active={isEditing() && localActiveButton() === "minus"}
     />
     </View>
     </View>

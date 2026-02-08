@@ -8,8 +8,9 @@ export function restaurantMenu() {
     {name: 'Drinks', menuImage: './assets/drinks.jpeg'},
   ]);
 
-  const [meal, setMeal] = createSignal<Record<string, any[]>>(
+  const [meal, setMeal] = createSignal<Record<string, Record<string, any[]>>>(
     {
+  "Breakfast": {
   "Luwombo": [
   {mealId: "1", 
     mealName: 'Beef lasagne',
@@ -369,8 +370,11 @@ export function restaurantMenu() {
     mealPrice: 4000, 
   },
   ]
+  },
+  "Lunch": {},
+  "Dinner": {},
+  "Drinks": {},
 }
-   
   );
 
 //   function increaseQuantity(category: string, index: number) {
