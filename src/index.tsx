@@ -1,7 +1,7 @@
 import { createRenderer, Config as LightningConfig, loadFonts } from "@lightningtv/solid";
 import { Route } from "@solidjs/router";
 import { HashRouter, useFocusManager } from "@lightningtv/solid/primitives";
-import App from "./screens/App";
+import AppWrapper from "./screens/AppWrapper";
 
 import fonts from "./fonts";
 import { merge } from "lodash-es";
@@ -22,13 +22,14 @@ loadFonts(fonts);
 render(() => {
   useFocusManager(config.keys, config.keyHoldOptions);
   return (
-    <HashRouter root={App}>
-      {/* <Route path="/" component={WelcomeScreen} /> */}
-      {/* <Route path="/" component={RestaurantScreen} /> 
-      <Route path="/" component={FacilityScreen} /> 
-      <Route path="/restaurant-meals/:category" component={RestaurantMealsScreen} /> */}
-      {/* <Route path="/" component={LiveTvScreen} />  */}
-       <Route path="/" component={FacilityScreen} /> 
+    <HashRouter root={AppWrapper}>
+      <Route path="/" component={WelcomeScreen} />
+       <Route path="/restaurant-meals/:category" component={RestaurantMealsScreen} />
+      <Route path="/" component={LiveTvScreen} /> 
+      <Route path="" component={AppWrapper}>
+    <Route path="/facilities" component={FacilityScreen} /> 
+    <Route path="/restaurant" component={RestaurantScreen} />
+       </Route>
     </HashRouter>
   );
 });
