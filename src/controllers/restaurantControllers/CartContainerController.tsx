@@ -5,9 +5,10 @@ import { Column, Row } from "@lightningtv/solid/primitives";
 
 
 export default function CartContainerContainer(){
-  
+
   return(
     <View
+    forwardFocus={1}
     style={{
       width: 480,
       height: 800,
@@ -19,7 +20,7 @@ export default function CartContainerContainer(){
       gap:10,
       clipping: true
     }}>
-     <View 
+     <View
       style={{
         width:380,
         height:28,
@@ -34,23 +35,20 @@ export default function CartContainerContainer(){
       }}
       >Invoice</Text>
       </View>
-      <View
-      selected={1}
-       style={{
-      width: 480,
-      height: 500,
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      gap:3,
-      // color: "#F58520",
-      clipping: true
-      }}>
+      <View forwardFocus={0} width={480} height={500} clipping={true}>
+      <Column
+        scroll="always"
+        style={{
+          width: 480,
+          height: 500,
+          gap: 3,
+          justifyContent: "flexStart",
+          alignItems: "center"
+        }}
+      >
   <For each={cartItems()}>
   {(item, index) => (
     <CartCard
-     autofocus ={index() === 0}
       mealImage={item.mealImage}
       mealName={item.mealName}
       mealDescription={item.mealDescription}
@@ -62,6 +60,7 @@ export default function CartContainerContainer(){
     />
   )}
     </For>
+    </Column>
     </View>
     <View style={{
       height: 180,
@@ -73,13 +72,13 @@ export default function CartContainerContainer(){
       alignItems: "center",
       gap: 15
     }}>
-      <View 
+      <View
       style={{
         width:380,
         height:20,
         y: 10
       }}>
-       <View 
+       <View
       style={{
         width:380,
         height:20,
@@ -137,36 +136,54 @@ export default function CartContainerContainer(){
         fontWeight: "lighter",
         color: "#000000ff",
         }}>UGX {total().toLocaleString()}</Text>
-       </View>                                                   
+       </View>
       </View>
-      
-      
+
+
        <Row style={{
         width: 380,
         height: 40,
         gap: 50
        }}>
-        <View style={{
-          width: 150,
-          height: 40,
-          color: "#F58520",
-          borderRadius: 10,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center"
-        }}>
+        <View
+          focusable
+          style={{
+            width: 150,
+            height: 40,
+            color: "#F58520",
+            borderRadius: 10,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: { scale: { duration: 100, easing: "ease-in-out" } },
+            $focus: {
+              scale: 1.05,
+              color: "#D06E10",
+              border: { width: 2, color: "#ffffff" },
+            }
+          }}
+        >
           <Text style={{fontSize: 20, color: "#ffffff", fontFamily: "Roboto", fontWeight:"lighter"}}>Order</Text>
         </View>
 
-       <View style={{
-          width: 150,
-          height: 40,
-          color: "#F58520",
-          borderRadius: 10,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center"
-        }}>
+       <View
+          focusable
+          style={{
+            width: 150,
+            height: 40,
+            color: "#F58520",
+            borderRadius: 10,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: { scale: { duration: 100, easing: "ease-in-out" } },
+            $focus: {
+              scale: 1.05,
+              color: "#D06E10",
+              border: { width: 2, color: "#ffffff" },
+            }
+          }}
+        >
           <Text style={{fontSize: 20, color: "#ffffff", fontFamily: "Roboto", fontWeight:"lighter"}}>Cancel</Text>
         </View>
        </Row>

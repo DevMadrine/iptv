@@ -11,19 +11,17 @@ const Button: Component<ButtonProps> = (props) => {
 
   return (
     <View
+      border={{ width: 2, color: props.active ? "#F58520" : "#00000070" }}
+      scale={props.active ? 0.8 : 1.0}
+      transition={{ scale: { duration: 100, easing: "ease-in-out" } }}
       style={{
         width: 35,
         height: 35,
         borderRadius: 8,
-        color: "#00000060",
+        color: props.active ? "#F5852040" : "#00000060",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        border: { 
-          width:2,  
-          color: props.active? "#F58520" : "#ffffff80" 
-        },
-       
       }}
     >
       <Text

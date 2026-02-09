@@ -2,7 +2,7 @@ import MealCard from "@/components/restaurantComponents/mealCard";
 import { addToCart, decreaseFromCart, mealModel } from "@/utils/restaurantUtils/restaurant-utils";
 import { For, View, Text, IntrinsicNodeProps} from "@lightningtv/solid";
 import { Column, Row } from "@lightningtv/solid/primitives";
-import { createMemo } from "solid-js";
+import { createMemo, Show } from "solid-js";
 
 interface Props extends IntrinsicNodeProps {
   width: number;
@@ -21,8 +21,9 @@ export default function MealContainerController(props: Props){
   });
 
   return(
-    <View 
-      width={props.width}  
+    <View
+      forwardFocus={0}
+      width={props.width}
       height={800}
       clipping={true}
     >
@@ -45,27 +46,31 @@ export default function MealContainerController(props: Props){
                 {categoryName}
               </Text>
               
-              <Row 
-                scroll="always"
-                width={props.width}  
-                height={160}
-                clipping={true}
-              >
-                <For each={meals}>
-                  {(mealData, itemIndex) => (
-                    <MealCard
-                      autofocus={rowIndex() === 0 && itemIndex() === 0}
-                      mealImage={mealData.mealImage}
-                      quantity={mealData.quantity}
-                      mealName={mealData.mealName}
-                      mealDescription={mealData.mealDescription}
-                      mealPrice={mealData.mealPrice}
-                      onIncrease={() => addToCart(mealData.mealId)}
-                      onDecrease={() => decreaseFromCart(mealData.mealId)}
-                    />
-                  )}
-                </For>
-              </Row>
+              <Show when={props.width} keyed>
+                {(w) => (
+                  <Row
+                    scroll="always"
+                    width={w}
+                    height={160}
+                    clipping={true}
+                  >
+                    <For each={meals}>
+                      {(mealData, itemIndex) => (
+                        <MealCard
+                          autofocus={rowIndex() === 0 && itemIndex() === 0}
+                          mealId={mealData.mealId}
+                          mealImage={mealData.mealImage}
+                          mealName={mealData.mealName}
+                          mealDescription={mealData.mealDescription}
+                          mealPrice={mealData.mealPrice}
+                          onIncrease={() => addToCart(mealData.mealId)}
+                          onDecrease={() => decreaseFromCart(mealData.mealId)}
+                        />
+                      )}
+                    </For>
+                  </Row>
+                )}
+              </Show>
             </View>
           )}
         </For>

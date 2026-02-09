@@ -14,8 +14,8 @@ export default function RestaurantMealsScreen(){
   const CART_WIDTH = 480;
   const GAP = 50;
   const FULL_WIDTH = 1778;
-  
-  const mealWidth = createMemo(() => 
+
+  const mealWidth = createMemo(() =>
     hasCartItems() ? FULL_WIDTH - CART_WIDTH - GAP : FULL_WIDTH
   );
 
@@ -36,13 +36,13 @@ export default function RestaurantMealsScreen(){
       <Row
         scroll="none"
         onSelectedChanged={(index) => setSelectedZone(index)}
-        width={FULL_WIDTH}  // Pass as JSX prop, not in style
+        width={FULL_WIDTH}  
         height={800}
         gap={GAP}
         clipping={true}
       >
         <MealContainerController
-          width={mealWidth()}  // This is reactive now!
+          width={mealWidth()}
           category={params.category}
         />
         <Show when={hasCartItems()}>

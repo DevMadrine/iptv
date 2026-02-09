@@ -1,16 +1,8 @@
 import { cart, setCart } from "@/models/restaurantModel/cartStore";
 import { restaurantMenu } from "@/models/restaurantModel/restaurant";
-import { createMemo, createSignal } from "solid-js";
+import { createMemo } from "solid-js";
 
 export const mealModel = restaurantMenu();
-export const [editing, setEditing] = createSignal(false);
-export const [activeButton, setActiveButton] = createSignal<"plus" | "minus" | null>(null);
-
-export function flashButton(type: "plus" | "minus") {
-  setActiveButton(type);
-  setTimeout(() => setActiveButton(null), 120);
-}
-
 export function addToCart(mealId: string) {
   setCart(items => {
     const existing = items.find(i => i.mealId === mealId);

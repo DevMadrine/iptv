@@ -3,6 +3,7 @@ import { IntrinsicNodeProps, View, Text, NodeStyles, TextStyles} from "@lightnin
 import { Component, createSignal} from "solid-js";
 
 interface MealCardProps extends IntrinsicNodeProps{
+mealId: string;  
 mealImage: string;
 mealName: string;
 mealDescription: string;
@@ -10,7 +11,6 @@ mealPrice: string;
 onIncrease: () => void;
 onDecrease: () => void;
 }
-
 
 const mealCardStyles: NodeStyles | undefined ={
   width: 360,
@@ -55,9 +55,9 @@ const [isEditing, setIsEditing] = createSignal(false);
 const [isFocused, setIsFocused] = createSignal(false);
 const [localActiveButton, setLocalActiveButton] = createSignal<"plus" | "minus" | null>(null);
 
-function localFlashButton(type: "plus" | "minus") {
-  setLocalActiveButton(type);
-  setTimeout(() => setLocalActiveButton(null), 120);
+function pulseButton(type: "plus" | "minus") {
+  setLocalActiveButton(null);
+  setTimeout(() => setLocalActiveButton(type), 50);
 }
 
 return(
@@ -66,7 +66,7 @@ return(
   autofocus={props.autofocus}
   border={isFocused() ? { width: 2, color: "#ffffff" } : undefined}
   onFocus={() => setIsFocused(true)}
-  onEnter={(e) => {setIsEditing(!isEditing()); setLocalActiveButton(null);e.stopPropagation();}}
+  onEnter={(e) => {setIsEditing(!isEditing()); setLocalActiveButton(isEditing() ? "plus" : null);e.stopPropagation();}}
   onBack={() => {setIsEditing(false); setLocalActiveButton(null)}}
   onBlur={() => {
         setIsEditing(false);
@@ -75,15 +75,27 @@ return(
       }}
   onLeft={(e) => {
         if (isEditing()) {
-         localFlashButton("minus")
-          props.onDecrease();
           e.stopPropagation();
+          pulseButton("minus");
+          props.onDecrease();
+          return true;
         }
       }}
   onRight={(e) => {
         if (isEditing()) {
-         localFlashButton("plus")
+          e.stopPropagation();
+          pulseButton("plus");
           props.onIncrease();
+          return true;
+        }
+      }}
+  onUp={(e) => {
+        if (isEditing()) {
+          e.stopPropagation();
+        }
+      }}
+  onDown={(e) => {
+        if (isEditing()) {
           e.stopPropagation();
         }
       }}
