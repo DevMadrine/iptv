@@ -11,7 +11,8 @@ import { lazy } from "solid-js";
 const RestaurantMealsScreen  = lazy(() => import("./screens/RestaurantMealsScreen"));
 const RestaurantScreen = lazy(() => import("./screens/RestaurantScreen"));
 const WelcomeScreen = lazy(() => import("./screens/WelcomeScreen"));
-const LiveTvScreen = lazy(() => import("./screens/LiveTvScreen"))
+const LiveTvScreen = lazy(() => import("./screens/LiveTvScreen"));
+const FacilityScreen = lazy(() => import("./screens/FacilityScreen"))
 
 
 merge(LightningConfig, config.lightning);
@@ -23,9 +24,11 @@ render(() => {
   return (
     <HashRouter root={App}>
       {/* <Route path="/" component={WelcomeScreen} /> */}
-      <Route path="/" component={RestaurantScreen} /> 
-      <Route path="/restaurant-meals/:category" component={RestaurantMealsScreen} />
+      {/* <Route path="/" component={RestaurantScreen} /> 
+      <Route path="/" component={FacilityScreen} /> 
+      <Route path="/restaurant-meals/:category" component={RestaurantMealsScreen} /> */}
       {/* <Route path="/" component={LiveTvScreen} />  */}
+       <Route path="/" component={FacilityScreen} /> 
     </HashRouter>
   );
 });

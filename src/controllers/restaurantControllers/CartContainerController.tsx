@@ -1,3 +1,4 @@
+import ButtonComponent from "@/components/ButtonComponent";
 import CartCard from "@/components/restaurantComponents/cartCard";
 import { addToCart, cartItems, decreaseFromCart,removeFromCart, subtotal, tax, total } from "@/utils/restaurantUtils/restaurant-utils";
 import { View, Text, For } from "@lightningtv/solid";
@@ -145,47 +146,18 @@ export default function CartContainerContainer(){
         height: 40,
         gap: 50
        }}>
-        <View
-          focusable
-          style={{
-            width: 150,
-            height: 40,
-            color: "#F58520",
-            borderRadius: 10,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            transition: { scale: { duration: 100, easing: "ease-in-out" } },
-            $focus: {
-              scale: 1.05,
-              color: "#D06E10",
-              border: { width: 2, color: "#ffffff" },
-            }
-          }}
-        >
-          <Text style={{fontSize: 20, color: "#ffffff", fontFamily: "Roboto", fontWeight:"lighter"}}>Order</Text>
-        </View>
 
-       <View
-          focusable
-          style={{
-            width: 150,
-            height: 40,
-            color: "#F58520",
-            borderRadius: 10,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            transition: { scale: { duration: 100, easing: "ease-in-out" } },
-            $focus: {
-              scale: 1.05,
-              color: "#D06E10",
-              border: { width: 2, color: "#ffffff" },
-            }
-          }}
-        >
-          <Text style={{fontSize: 20, color: "#ffffff", fontFamily: "Roboto", fontWeight:"lighter"}}>Cancel</Text>
-        </View>
+       <ButtonComponent
+      width={150}
+      height={40}
+      name={"Order"}
+     />  
+    
+     <ButtonComponent
+      width={150}
+      height={40}
+      name={"Cancel"}
+     />
        </Row>
     </View>
     </View>

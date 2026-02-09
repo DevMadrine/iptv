@@ -10,27 +10,71 @@ export interface Player {
   seek(time: number): void;
 }
 
+export interface PlayerOptions {
+  width?: number;
+  height?: number;
+  x?: number;
+  y?: number;
+  borderRadius?: number;
+  overlay?: boolean;
+}
+
 export class CommonPlayer implements Player {
   private _player: shaka.Player | null = null;
   private _videoElement: HTMLVideoElement;
 
-  constructor(videoElement?: HTMLVideoElement) {
-    this._videoElement = videoElement || this.createVideoElement();
+  constructor(videoElement?: HTMLVideoElement, options?: PlayerOptions) {
+    this._videoElement = videoElement || this.createVideoElement(options);
   }
 
-  private createVideoElement(): HTMLVideoElement {
+  private static getOverlayContainer(): HTMLElement {
+    let container = document.getElementById("video-overlay");
+    if (!container) {
+      container = document.createElement("div");
+      container.id = "video-overlay";
+      container.style.position = "fixed";
+      container.style.top = "0";
+      container.style.left = "0";
+      container.style.width = "1920px";
+      container.style.height = "1080px";
+      container.style.transformOrigin = "0 0";
+      container.style.zIndex = "20";
+      container.style.pointerEvents = "none";
+      container.style.overflow = "hidden";
+
+      const canvas = document.querySelector("#app canvas") as HTMLCanvasElement | null;
+      if (canvas) {
+        const rect = canvas.getBoundingClientRect();
+        container.style.transform = `scale(${rect.width / 1920}, ${rect.height / 1080})`;
+      }
+
+      document.body.appendChild(container);
+    }
+    return container;
+  }
+
+  private createVideoElement(options?: PlayerOptions): HTMLVideoElement {
     const video = document.createElement("video");
+
     video.style.position = "absolute";
-    video.style.top = "0";
-    video.style.left = "0";
-    video.style.width = "100%";
-    video.style.height = "100%";
+    video.style.top = options?.y != null ? `${options.y}px` : "0";
+    video.style.left = options?.x != null ? `${options.x}px` : "0";
+    video.style.width = options?.width != null ? `${options.width}px` : "100%";
+    video.style.height = options?.height != null ? `${options.height}px` : "100%";
     video.style.objectFit = "cover";
+    if (options?.borderRadius != null) {
+      video.style.borderRadius = `${options.borderRadius}px`;
+      video.style.overflow = "hidden";
+    }
     video.autoplay = true;
     video.muted = true;
     video.playsInline = true;
-    const container = document.getElementById("video") || document.body;
-    container.appendChild(video);
+    if (options?.overlay) {
+      CommonPlayer.getOverlayContainer().appendChild(video);
+    } else {
+      const container = document.getElementById("video") || document.body;
+      container.appendChild(video);
+    }
     return video;
   }
 
