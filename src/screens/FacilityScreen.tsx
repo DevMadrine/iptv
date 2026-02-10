@@ -5,7 +5,7 @@ import TvPlayerView from "@/views/tvViews/TvPlayerView";
 import type { CommonPlayer } from "#devices/common/player";
 import { View, Text, For } from "@lightningtv/solid";
 import { Column, Row } from "@lightningtv/solid/primitives";
-import { createMemo, createSignal } from "solid-js";
+import { createMemo, createSignal, onMount, onCleanup } from "solid-js";
 
 const facility = facilityModel();
 
@@ -15,6 +15,22 @@ export default function FacilityScreen() {
   const [isPlaying, setIsPlaying] = createSignal(true); 
 
   let playerRef: CommonPlayer | undefined;
+
+  onMount(() => {
+    const videoDiv = document.getElementById("video");
+    if (videoDiv) {
+      videoDiv.style.backgroundImage = "url('./assets/rest.jpg')";
+      videoDiv.style.backgroundSize = "cover";
+      videoDiv.style.backgroundPosition = "center";
+    }
+  });
+
+  onCleanup(() => {
+    const videoDiv = document.getElementById("video");
+    if (videoDiv) {
+      videoDiv.style.backgroundImage = "";
+    }
+  });
 
   const activeFacility = createMemo(() => {
     const facilities = facility.facility();
@@ -37,7 +53,6 @@ export default function FacilityScreen() {
 
   return (
     <View
-      src={"./assets/rest.jpg"}
       width={1920}
       height={1080}
     >
@@ -74,7 +89,8 @@ export default function FacilityScreen() {
               width={814}
               height={414}
               borderRadius={15}
-              color="#ffffffff"
+              color={0x00000000}
+              border={{ width: 4, color: 0xffffffff }}
               display="flex"
               justifyContent="center"
               alignItems="center"
@@ -84,7 +100,6 @@ export default function FacilityScreen() {
                 width={800}
                 height={400}
                 borderRadius={8}
-                overlay
                 onPlayerReady={(player) => { playerRef = player; }}
               />
             </View>

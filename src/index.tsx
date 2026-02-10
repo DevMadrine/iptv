@@ -1,7 +1,8 @@
 import { createRenderer, Config as LightningConfig, loadFonts } from "@lightningtv/solid";
 import { Route } from "@solidjs/router";
 import { HashRouter, useFocusManager } from "@lightningtv/solid/primitives";
-import App from "./screens/App";
+import AppWrapper from "./screens/AppWrapper";
+import NavLayout from "./components/navigation/NavLayout";
 
 import fonts from "./fonts";
 import { merge } from "lodash-es";
@@ -12,7 +13,8 @@ const RestaurantMealsScreen  = lazy(() => import("./screens/RestaurantMealsScree
 const RestaurantScreen = lazy(() => import("./screens/RestaurantScreen"));
 const WelcomeScreen = lazy(() => import("./screens/WelcomeScreen"));
 const LiveTvScreen = lazy(() => import("./screens/LiveTvScreen"));
-const FacilityScreen = lazy(() => import("./screens/FacilityScreen"))
+const FacilityScreen = lazy(() => import("./screens/FacilityScreen"));
+const SettingsScreen  = lazy(() => import("./screens/SettingsScreen"))
 
 
 merge(LightningConfig, config.lightning);
@@ -22,13 +24,15 @@ loadFonts(fonts);
 render(() => {
   useFocusManager(config.keys, config.keyHoldOptions);
   return (
-    <HashRouter root={App}>
-      {/* <Route path="/" component={WelcomeScreen} /> */}
-      {/* <Route path="/" component={RestaurantScreen} /> 
-      <Route path="/" component={FacilityScreen} /> 
-      <Route path="/restaurant-meals/:category" component={RestaurantMealsScreen} /> */}
-      {/* <Route path="/" component={LiveTvScreen} />  */}
-       <Route path="/" component={FacilityScreen} /> 
+    <HashRouter root={AppWrapper}>
+      <Route path="/" component={WelcomeScreen} />
+      <Route path="/restaurant-meals/:category" component={RestaurantMealsScreen} />
+      <Route path="/tv" component={LiveTvScreen} />
+      <Route path="/settings" component={SettingsScreen} />
+      <Route path="" component={NavLayout}>
+        <Route path="/facilities" component={FacilityScreen} />
+        <Route path="/restaurant" component={RestaurantScreen} />
+      </Route>
     </HashRouter>
   );
 });
