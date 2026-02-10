@@ -13,7 +13,8 @@ const RestaurantMealsScreen  = lazy(() => import("./screens/RestaurantMealsScree
 const RestaurantScreen = lazy(() => import("./screens/RestaurantScreen"));
 const WelcomeScreen = lazy(() => import("./screens/WelcomeScreen"));
 const LiveTvScreen = lazy(() => import("./screens/LiveTvScreen"));
-const FacilityScreen = lazy(() => import("./screens/FacilityScreen"))
+const FacilityScreen = lazy(() => import("./screens/FacilityScreen"));
+const SettingsScreen  = lazy(() => import("./screens/SettingsScreen"))
 
 
 merge(LightningConfig, config.lightning);
@@ -27,6 +28,7 @@ render(() => {
       <Route path="/" component={WelcomeScreen} />
       <Route path="/restaurant-meals/:category" component={RestaurantMealsScreen} />
       <Route path="/tv" component={LiveTvScreen} />
+      <Route path="/settings" component={SettingsScreen} />
       <Route path="" component={NavLayout}>
         <Route path="/facilities" component={FacilityScreen} />
         <Route path="/restaurant" component={RestaurantScreen} />

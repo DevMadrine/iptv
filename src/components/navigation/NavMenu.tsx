@@ -1,16 +1,16 @@
 import { ElementNode, For, NodeStyles, Text, View } from "@lightningtv/solid";
 import { Column } from "@lightningtv/solid/primitives";
-import { useLocation, useMatch, useNavigate } from "@solidjs/router";
+import { useLocation, useNavigate } from "@solidjs/router";
 import { createSignal, Show } from "solid-js";
 
 import NavButton from "./NavButton";
 
 const menuItems = [
-  { label: "Home", icon: "./assets/welcome.png", route: "/" },
+  { label: "Home", icon: "./assets/home.webp", route: "/" },
   { label: "Facilities", icon: "./assets/facilities.svg", route: "/facilities" },
   { label: "Live Tv", icon: "./assets/tv.svg", route: "/tv" },
   { label: "Restaurant", icon: "./assets/restaurant.svg", route: "/restaurant" },
-  { label: "Settings", icon: "./assets/Settings.svg", route: "/settings" },
+  { label: "Settings", icon: "./assets/set.png", route: "/settings" },
 ];
 
 export default function NavMenu(props) {
@@ -48,19 +48,6 @@ export default function NavMenu(props) {
     logo?.states.remove("$open");
   }
 
-  //   function onBlur(this: ElementNode) {
-  //   setMenuFocused(false);
-  //   backdrop!.states.remove("$focus");
-  //   this.children.forEach(c => {
-  //     c.states!.remove("$active");
-  //     c.states!.add("$base"); // keep icons visible
-  //     c.alpha = 1; // ensure visible
-  //   });
-  //   this.selected = 0;
-  //   header?.states.remove("$open");
-  //   logo?.states.remove("$open");
-  // }
-
   function handleNavigate(page: string) {
     if (location.pathname === page) {
       props?.focusPage?.();
@@ -85,13 +72,13 @@ export default function NavMenu(props) {
       y: { duration: 220, easing: "ease-in-out" },
     },
     $open: {
-      width: 320,
-      height: 320,
+      width: 250,
+      height: 250,
       alignItems: "center",
       justifyContent: "center",
       y: 50,
       borderRadius: 12,
-      border: { width: 3, color: 0xffd080ff },
+      border: { width: 3, color: "#ffffff" },
     },
   };
 
@@ -122,9 +109,9 @@ export default function NavMenu(props) {
     color: "#000000",
     src: "./assets/sidenav.png",
     alpha: 0,
-    width: 200,
+    width: 100,
     height: 1080,
-    $focus: { alpha: 1, width: 1600 },
+    $focus: { alpha: 1, width: 800 },
     transition: { alpha: true, width: true },
   };
 
@@ -141,16 +128,16 @@ export default function NavMenu(props) {
             logo = el;
           }}
           style={logoStyles}
-          src={"./assets/htl.png"}
+          src={"./assets/serena.svg"}
         />
 
         <Show when={!menuFocused()}>
           <View style={{ display: "flex", flexDirection: "column", gap: 60, marginTop: 60 }}>
-            <View src="./assets/welcome.png" style={{ width: 35, height: 35, alpha: 1 }} />
-            <View src="./assets/facilities.svg" style={{ width: 35, height: 35, alpha: 1 }} />
-            <View src="./assets/tv.svg" style={{ width: 35, height: 35, alpha: 1 }} />
-            <View src="./assets/restaurant.svg" style={{ width: 35, height: 35, alpha: 1 }} />
-            <View src="./assets/Settings.svg" style={{ width: 35, height: 35, alpha: 1 }} />
+            <View src="./assets/home.webp" style={{ width: 35, height: 35 }} />
+            <View src="./assets/facilities.svg" style={{ width: 35, height: 35}} />
+            <View src="./assets/tv.svg" style={{ width: 35, height: 35}} />
+            <View src="./assets/restaurant.svg" style={{ width: 35, height: 35}} />
+            <View src="./assets/set.png" style={{ width: 42, height: 42}} />
           </View>
         </Show>
 
@@ -158,8 +145,8 @@ export default function NavMenu(props) {
           <Text
             style={{
               fontFamily: "Roboto",
-              fontWeight: "bolder",
-              fontSize: 35,
+              fontWeight: "lighter",
+              fontSize: 25,
               transition: { alpha: { duration: 150 } },
               skipFocus: true,
               $focus: { alpha: 1 },
