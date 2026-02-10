@@ -1,9 +1,6 @@
-import NavMenu from "@/components/navigation/NavMenu";
-import { useNavFocus } from "@/hooks/useNavFocus";
-import { renderer, View, ElementNode } from "@lightningtv/solid";
+import { renderer, View } from "@lightningtv/solid";
 import { useAnnouncer, useMouse, setupFPS } from "@lightningtv/solid/primitives";
 import { useNavigate } from "@solidjs/router";
-
 
 export default function AppWrapper(props) {
   const navigate = useNavigate();
@@ -14,14 +11,6 @@ export default function AppWrapper(props) {
   useMouse();
   setupFPS({ renderer });
 
-  let navMenu: ElementNode | undefined;
-  let pageContainer: ElementNode | undefined;
-
-  const { focusNavMenu, restoreFocus, shouldRestoreFromNav } = useNavFocus(
-    () => navMenu,
-    () => pageContainer,
-  );
-
   return (
     <View
       ref={window.APP as any}
@@ -30,21 +19,8 @@ export default function AppWrapper(props) {
       onLast={() => history.back()}
       onMenu={() => navigate("/")}
       onBack={() => navigate(-1)}
-      onBackspace={focusNavMenu}
-      onLeft={focusNavMenu}
-      onRight={() => {
-        if (shouldRestoreFromNav()) {
-          restoreFocus();
-        }
-      }}
     >
-      <View ref={pageContainer}>{props.children}</View>
-      <NavMenu
-        ref={navMenu as any}
-        focusPage={() => {
-          restoreFocus();
-        }}
-      />
+      {props.children}
     </View>
   );
 }

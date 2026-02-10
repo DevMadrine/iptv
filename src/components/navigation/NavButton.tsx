@@ -13,17 +13,26 @@ const NavButtonStyles: NodeStyles = {
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-  borderRadius: 8,
+  borderRadius: 12,
   color: 0,
+  border: { width: 0, color: 0x00000000 },
   transition: {
-    width: { duration: 220, easing: "ease-in-out" },
-    height: { duration: 220, easing: "ease-in-out" },
-    x: { duration: 220, easing: "ease-in-out" },
-    color: { duration: 220, easing: "ease-in-out" },
+    width: { duration: 250, easing: "ease-in-out" },
+    height: { duration: 250, easing: "ease-in-out" },
+    x: { duration: 250, easing: "ease-in-out" },
+    color: { duration: 300, easing: "ease-in-out" },
+    scale: { duration: 250, easing: "ease-in-out" },
+    borderColor: { duration: 300, easing: "ease-in-out" },
   },
 
   $focus: {
-    color: "#F58520",
+    linearGradient: {
+      angle: 135,
+      stops: [0, 1],
+      colors: [0xf5a623ff, 0xe8600aff],
+    },
+    border: { width: 2, color: 0xffd080ff },
+    scale: 1.05,
   },
   $active: {
     width: 325,

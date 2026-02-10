@@ -1,22 +1,22 @@
 import { createWelcomeModel} from "@/models/welcomeModel/welcomeData";
 import { WelcomeNavigationView } from "@/views/welcome/welcomeNavigationView";
+import { useNavigate } from "@solidjs/router";
 
 
-export default function WelcomeController() {
+export default function WelcomeController(props: any) {
   const model = createWelcomeModel();
+  const navigate = useNavigate();
 
   function handleNavigation(route: string) {
-    console.log("Navigate to:", route);
-
-    // later:
-    // router.navigate(route)
-    // or firebolt.launchApp(route)
+    navigate(route);
   }
 
   return (
     <WelcomeNavigationView
+      ref={props.ref}
       items={model.navigationItems}
       onSelect={handleNavigation}
+      onDown={props.onDown}
     />
   );
 }

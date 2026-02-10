@@ -8,7 +8,7 @@ import NavButton from "./NavButton";
 const menuItems = [
   { label: "Home", icon: "./assets/welcome.png", route: "/" },
   { label: "Facilities", icon: "./assets/facilities.svg", route: "/facilities" },
-  { label: "Live Tv", icon: "./assets/tv.svg", route: "/live-tv" },
+  { label: "Live Tv", icon: "./assets/tv.svg", route: "/tv" },
   { label: "Restaurant", icon: "./assets/restaurant.svg", route: "/restaurant" },
   { label: "Settings", icon: "./assets/Settings.svg", route: "/settings" },
 ];
@@ -90,8 +90,8 @@ export default function NavMenu(props) {
       alignItems: "center",
       justifyContent: "center",
       y: 50,
-      borderRadius: 8,
-      border: { width: 6, color: "#F58520" },
+      borderRadius: 12,
+      border: { width: 3, color: 0xffd080ff },
     },
   };
 
