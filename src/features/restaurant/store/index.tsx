@@ -1,33 +1,29 @@
 import { createRenderer, Config as LightningConfig, loadFonts } from "@lightningtv/solid";
 import { Route } from "@solidjs/router";
 import { HashRouter, useFocusManager } from "@lightningtv/solid/primitives";
-import "core-js/stable";
-import "regenerator-runtime/runtime";
+import AppWrapper from "../../../App";
+import NavLayout from "../../../shared/navigation/NavLayout";
 
-import fonts from "./fonts";
+import fonts from "../../../fonts";
 import { merge } from "lodash-es";
 import { config } from "#devices/common";
 import { lazy } from "solid-js";
 
-const RestaurantMealsScreen = lazy(() => import("./features/restaurant/pages/RestaurantMealsScreen"));
-const RestaurantScreen = lazy(() => import("./features/restaurant/pages/RestaurantScreen"));
-const WelcomeScreen = lazy(() => import("./features/welcome/pages/WelcomeScreen"));
-const LiveTvScreen = lazy(() => import("./features/tv/pages/LiveTvScreen"));
-const FacilityScreen = lazy(() => import("./features/facilities/pages/FacilityScreen"));
-const SettingsScreen = lazy(() => import("./features/settings/pages/SettingsScreen"));
-const NavLayout = lazy(() => import("./shared/navigation/NavLayout"));
-const App = lazy(() => import("./App"));
+const RestaurantMealsScreen = lazy(() => import("../pages/RestaurantMealsScreen"));
+const RestaurantScreen = lazy(() => import("../pages/RestaurantScreen"));
+const WelcomeScreen = lazy(() => import("../../welcome/pages/WelcomeScreen"));
+const LiveTvScreen = lazy(() => import("../../tv/pages/LiveTvScreen"));
+const FacilityScreen = lazy(() => import("../../facilities/pages/FacilityScreen"));
+const SettingsScreen = lazy(() => import("../../settings/pages/SettingsScreen"));
 
 merge(LightningConfig, config.lightning);
 
 const { render } = createRenderer();
 loadFonts(fonts);
 render(() => {
-  settings: {
-    renderMode: "canvas";
-  }
+  useFocusManager(config.keys, config.keyHoldOptions);
   return (
-    <HashRouter root={props => <App {...props} />}>
+    <HashRouter root={AppWrapper}>
       <Route path="/" component={WelcomeScreen} />
       <Route path="/restaurant-meals/:category" component={RestaurantMealsScreen} />
       <Route path="/tv" component={LiveTvScreen} />

@@ -7,35 +7,42 @@ import deviceConfigPlugin from "./devices/deviceConfigPlugin.js";
 
 const envDir = "./environments";
 
-export default defineConfig(({ mode }) => {
-  // Get environment variables
-  // const env = loadEnv(mode, path.join(__dirname, envDir));
-
+export default defineConfig(({ _mode }) => {
   return {
     envDir,
-    define: {
-      __DEV__: mode !== "production",
+
+    build: {
+      target: "es2017",
+      cssTarget: "chrome49",
+      minify: "terser",
+      sourcemap: false,
+      rollupOptions: {
+        output: {
+          manualChunks: undefined,
+        },
+      },
     },
+
     plugins: [
       deviceConfigPlugin(process.env.TARGET_DEVICE),
+
       hexColorTransform({
         include: ["src/**/*.{ts,tsx,js,jsx}"],
       }),
+
       solidPlugin({
         solid: {
           moduleName: "@lightningtv/solid",
           generate: "universal",
         },
       }),
+
       legacy({
-        targets: ["defaults", "Chrome >= 49"],
-        // additionalLegacyPolyfills: ["whatwg-fetch", "es6-proxy-polyfill"],
-        modernPolyfills: [
-          // Safari 11 has modules, but throws > ReferenceError: Can't find variable: globalThis
-          "es.global-this",
-        ],
+        targets: ["chrome 49"],
+        modernPolyfills: ["es.global-this"],
       }),
     ],
+
     resolve: {
       alias: {
         theme: path.resolve(__dirname, "./theme.js"),
@@ -44,16 +51,25 @@ export default defineConfig(({ mode }) => {
       },
       dedupe: ["solid-js", "@lightningtv/solid", "@lightningtv/core", "@lightningjs/renderer"],
     },
+
     optimizeDeps: {
       exclude: ["@lightningtv/solid", "@lightningtv/core", "@lightningjs/renderer"],
     },
+
     server: {
-      hmr: true,
+      host: "0.0.0.0",
+      port: 5173,
+      cors: true,
+      hmr: {
+        protocol: "ws",
+        host: "172.40.1.185",
+        port: 5173,
+      },
       headers: {
-        "Cross-Origin-Opener-Policy": "same-origin",
-        "Cross-Origin-Embedder-Policy": "require-corp",
+        "Access-Control-Allow-Origin": "*",
       },
     },
+
     test: {
       browser: {
         enabled: true,
@@ -61,7 +77,6 @@ export default defineConfig(({ mode }) => {
         provider: "playwright",
         name: "webkit",
       },
-      testTransformMode: { web: ["/.[jt]sx?$/"] },
       globals: true,
     },
   };

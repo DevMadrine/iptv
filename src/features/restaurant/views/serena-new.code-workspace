@@ -1,0 +1,14 @@
+{
+  "folders": [
+    {
+      "path": "../../../..",
+    },
+    {
+      "name": "tizen",
+      "path": "../../../../tizen",
+    },
+  ],
+  "settings": {
+    "claudeCode.useTerminal": true,
+  },
+}
